@@ -365,23 +365,24 @@
     }
     .hero-names {
       font-family: var(--font-display);
-      font-size: var(--text-hero);
+      font-size: var(--text-2xl);
       font-weight: 400;
       letter-spacing: -0.01em;
       color: var(--text);
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: clamp(var(--space-4), 3vw, var(--space-8));
-      line-height: 1;
-      flex-wrap: wrap;
-      justify-content: center;
+      gap: var(--space-2);
+      line-height: 1.2;
+      text-align: center;
     }
     .ampersand {
       font-family: var(--font-display);
       font-style: italic;
       color: var(--gold);
-      font-size: 0.68em;
+      font-size: 0.8em;
       opacity: 0.9;
+      margin: 0;
     }
     .hero-date {
       font-family: var(--font-body);
@@ -522,6 +523,146 @@
       margin-top: var(--space-2);
       padding-top: var(--space-3);
       border-top: 1px solid rgba(212,175,55,0.1);
+    }
+
+    /* ─── FAMILY ─────────────────────────────────── */
+    .family-section { background: linear-gradient(to bottom, var(--black), var(--black-2)); }
+    .family-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+      gap: clamp(var(--space-6), 4vw, var(--space-10));
+      margin-bottom: clamp(var(--space-12), 6vw, var(--space-16));
+    }
+    .family-card {
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(212,175,55,0.08);
+      border-radius: var(--radius-xl);
+      padding: clamp(var(--space-6), 3vw, var(--space-8));
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s var(--ease-out), border-color 0.4s;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    .family-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(212,175,55,0.2);
+    }
+    .family-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(212,175,55,0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .family-card:hover::before { opacity: 1; }
+    .family-card-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+      padding-bottom: var(--space-4);
+      border-bottom: 1px solid rgba(212,175,55,0.1);
+    }
+    .family-card-icon {
+      color: var(--gold);
+      opacity: 0.7;
+    }
+    .family-card-title {
+      font-family: var(--font-display);
+      font-size: var(--text-lg);
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+    }
+    .family-card-name {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--text);
+      font-weight: 400;
+    }
+    .family-members {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .family-member {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-2) var(--space-3);
+      background: rgba(212,175,55,0.03);
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(212,175,55,0.08);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .family-member:hover {
+      background: rgba(212,175,55,0.06);
+      border-color: rgba(212,175,55,0.15);
+    }
+    .family-member-label {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .family-member-name {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--text);
+      font-weight: 400;
+    }
+    .family-quote {
+      text-align: center;
+      padding: clamp(var(--space-8), 4vw, var(--space-12));
+      background: rgba(212,175,55,0.02);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(212,175,55,0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .quote-arabic {
+      font-family: var(--font-arabic);
+      font-size: clamp(1.2rem, 1rem + 1vw, 1.8rem);
+      color: var(--gold);
+      opacity: 0.8;
+      line-height: 1.8;
+      margin-bottom: var(--space-4);
+    }
+    .quote-translation {
+      font-family: var(--font-body);
+      font-size: var(--text-base);
+      color: var(--text-muted);
+      font-style: italic;
+      margin-bottom: var(--space-3);
+      line-height: 1.6;
+    }
+    .quote-reference {
+      font-family: var(--font-body);
+      font-size: var(--text-sm);
+      color: var(--text-faint);
+      opacity: 0.7;
+    }
+
+    /* ─── COUNTDOWN SECTION ─────────────────────── */
+    .countdown-section { 
+      background: linear-gradient(to bottom, var(--black-2), var(--black));
+      text-align: center;
+    }
+    .countdown-quote {
+      margin-top: clamp(var(--space-8), 4vw, var(--space-12));
+      padding: clamp(var(--space-6), 3vw, var(--space-8));
+      background: rgba(212,175,55,0.02);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(212,175,55,0.08);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
 
     /* ─── GALLERY ───────────────────────────────── */
@@ -977,7 +1118,7 @@
         <div class="hero-image-glow" aria-hidden="true"></div>
         <img
           class="hero-image"
-          src="https://picsum.photos/seed/nikah-couple/900/600"
+          src="assets/mahwish_pic_1.jpeg"
           alt="Mohammad Akhlak Alam and Mahwish Lais"
           width="900" height="600"
           loading="eager"
@@ -999,17 +1140,6 @@
       <p class="hero-date reveal-fade" id="hero-names">Sunday · 23 August 2026 · 1447 AH</p>
       <p class="hero-location reveal-fade">Swagatam Marriage Hall · Bettiah, Bihar</p>
       <div class="hero-divider reveal-fade" aria-hidden="true"></div>
-
-      <!-- Countdown -->
-      <div class="countdown-row reveal-fade" id="countdown" aria-label="Time until wedding">
-        <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
-        <span class="countdown-sep" aria-hidden="true">:</span>
-        <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
-        <span class="countdown-sep" aria-hidden="true">:</span>
-        <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">Mins</span></div>
-        <span class="countdown-sep" aria-hidden="true">:</span>
-        <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">Secs</span></div>
-      </div>
     </div>
 
     <!-- Arabesque bottom ornament -->
@@ -1052,13 +1182,13 @@
 
       <div class="story-image-row">
         <div class="story-img-wrap reveal-scale">
-          <img class="story-img" src="https://picsum.photos/seed/wedding-flowers/400/600" alt="Wedding flowers" width="400" height="600" loading="lazy" decoding="async"/>
+          <img class="story-img" src="assets/WhatsApp Image 2026-04-27 at 10.30.15 PM.jpeg" alt="Wedding flowers" width="400" height="600" loading="lazy" decoding="async"/>
         </div>
         <div class="story-img-wrap story-img-wrap--mid reveal-scale" style="transition-delay:0.1s">
-          <img class="story-img" src="https://picsum.photos/seed/romantic-couple2/500/700" alt="Couple portrait" width="500" height="700" loading="lazy" decoding="async"/>
+          <img class="story-img" src="assets/WhatsApp Image 2026-04-27 at 10.30.16 PM.jpeg" alt="Couple portrait" width="500" height="700" loading="lazy" decoding="async"/>
         </div>
         <div class="story-img-wrap reveal-scale" style="transition-delay:0.2s">
-          <img class="story-img" src="https://picsum.photos/seed/wedding-ceremony/400/600" alt="Wedding ceremony" width="400" height="600" loading="lazy" decoding="async"/>
+          <img class="story-img" src="assets/WhatsApp Image 2026-04-27 at 10.30.16 PM (1).jpeg" alt="Wedding ceremony" width="400" height="600" loading="lazy" decoding="async"/>
         </div>
       </div>
     </div>
@@ -1085,18 +1215,7 @@
           <p class="event-card-loc">Swagatam Marriage Hall<br/>Manuwapool Chowk, Bettiah</p>
         </div>
 
-        <div class="event-card reveal-fade" style="transition-delay:0.1s">
-          <div class="event-card-icon" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#D4AF37" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M14 3L17 9H23L18.5 13L20.5 19L14 15L7.5 19L9.5 13L5 9H11L14 3Z"/>
-            </svg>
-          </div>
-          <p class="event-card-label">Feast</p>
-          <h3 class="event-card-title">Walima Reception</h3>
-          <p class="event-card-detail">Sunday, 23 August 2026<br/>Evening · Dusk Onwards</p>
-          <p class="event-card-loc">Swagatam Marriage Hall<br/>Manuwapool Chowk, Bettiah</p>
-        </div>
-
+        
         <div class="event-card reveal-fade" style="transition-delay:0.2s">
           <div class="event-card-icon" aria-hidden="true">
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#D4AF37" stroke-width="1.5" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -1117,6 +1236,79 @@
     </div>
   </section>
 
+  <!-- ──── 3.5. FAMILY ──── -->
+  <section class="family-section section" id="family" aria-labelledby="family-title">
+    <div class="container">
+      <p class="section-label reveal-fade">Our Families · عائلاتنا</p>
+      <h2 class="section-title reveal-fade" id="family-title">Blessed by <em>Family</em></h2>
+
+      <div class="family-grid">
+        <!-- Bride Side -->
+        <div class="family-card reveal-fade">
+          <div class="family-card-header">
+            <div class="family-card-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="16" cy="10" r="6" fill="#D4AF37" opacity="0.8"/>
+                <path d="M8 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#D4AF37" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <h3 class="family-card-title">Bride Side</h3>
+            <p class="family-card-name">Mahwish Lais</p>
+          </div>
+          <div class="family-members">
+            <div class="family-member">
+              <span class="family-member-label">Father</span>
+              <span class="family-member-name">Md Abul Lais</span>
+            </div>
+            <div class="family-member">
+              <span class="family-member-label">Mother</span>
+              <span class="family-member-name">Shabana Parveen</span>
+            </div>
+            <div class="family-member">
+              <span class="family-member-label">Sister</span>
+              <span class="family-member-name">Masharim Lais</span>
+            </div>
+            <div class="family-member">
+              <span class="family-member-label">Brother</span>
+              <span class="family-member-name">Mohd Tanzeel</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Groom Side -->
+        <div class="family-card reveal-fade" style="transition-delay:0.1s">
+          <div class="family-card-header">
+            <div class="family-card-icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="16" cy="10" r="6" fill="#D4AF37" opacity="0.8"/>
+                <path d="M8 26c0-4.4 3.6-8 8-8s8 3.6 8 8" stroke="#D4AF37" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <h3 class="family-card-title">Groom Side</h3>
+            <p class="family-card-name">Mohammad Akhlak Alam</p>
+          </div>
+          <div class="family-members">
+            <div class="family-member">
+              <span class="family-member-label">Father</span>
+              <span class="family-member-name">Md Ameer</span>
+            </div>
+            <div class="family-member">
+              <span class="family-member-label">Mother</span>
+              <span class="family-member-name">Ajmeree Khatun</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Family Quote -->
+      <div class="family-quote reveal-fade" style="transition-delay:0.2s">
+        <p class="quote-arabic">وَأَنكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ</p>
+        <p class="quote-translation">"And marry the unmarried among you and the righteous among your male slaves and female slaves"</p>
+        <p class="quote-reference">— An-Nur 24:32</p>
+      </div>
+    </div>
+  </section>
+
   <!-- ──── 4. GALLERY ──── -->
   <section class="gallery-section section" id="gallery" aria-labelledby="gallery-title">
     <div class="container reveal-fade">
@@ -1126,23 +1318,23 @@
 
     <div class="gallery-grid reveal-scale">
       <div class="gallery-item">
-        <img src="https://picsum.photos/seed/wedding-hall/600/400" alt="Wedding hall decor" width="600" height="400" loading="lazy" decoding="async"/>
+        <img src="assets/WhatsApp Image 2026-05-04 at 4.38.39 PM.jpeg" alt="Wedding hall decor" width="600" height="400" loading="lazy" decoding="async"/>
         <div class="gallery-overlay" aria-hidden="true"></div>
       </div>
       <div class="gallery-item">
-        <img src="https://picsum.photos/seed/couple-portrait/600/800" alt="Couple portrait" width="600" height="800" loading="lazy" decoding="async"/>
+        <img src="assets/WhatsApp Image 2026-05-04 at 4.38.40 PM.jpeg" alt="Couple portrait" width="600" height="800" loading="lazy" decoding="async"/>
         <div class="gallery-overlay" aria-hidden="true"></div>
       </div>
       <div class="gallery-item">
-        <img src="https://picsum.photos/seed/wedding-flowers2/600/400" alt="Floral arrangement" width="600" height="400" loading="lazy" decoding="async"/>
+        <img src="assets/WhatsApp Image 2026-05-04 at 4.38.40 PM (1).jpeg" alt="Floral arrangement" width="600" height="400" loading="lazy" decoding="async"/>
         <div class="gallery-overlay" aria-hidden="true"></div>
       </div>
       <div class="gallery-item">
-        <img src="https://picsum.photos/seed/wedding-lights/600/400" alt="Wedding lights" width="600" height="400" loading="lazy" decoding="async"/>
+        <img src="assets/WhatsApp Image 2026-05-04 at 4.38.41 PM.jpeg" alt="Wedding lights" width="600" height="400" loading="lazy" decoding="async"/>
         <div class="gallery-overlay" aria-hidden="true"></div>
       </div>
       <div class="gallery-item">
-        <img src="https://picsum.photos/seed/wedding-ring/600/400" alt="Wedding rings" width="600" height="400" loading="lazy" decoding="async"/>
+        <img src="assets/WhatsApp Image 2026-05-04 at 4.38.41 PM (1).jpeg" alt="Wedding rings" width="600" height="400" loading="lazy" decoding="async"/>
         <div class="gallery-overlay" aria-hidden="true"></div>
       </div>
     </div>
@@ -1218,6 +1410,31 @@
       <p class="rsvp-footnote reveal-fade">
         Barakallahu lakuma wa baraka alaykuma — Ameen
       </p>
+    </div>
+  </section>
+
+  <!-- ──── COUNTDOWN TIMER ──── -->
+  <section class="countdown-section section" id="countdown-section" aria-labelledby="countdown-title">
+    <div class="container">
+      <p class="section-label reveal-fade">Time Until Wedding · الوقت حتى الزفاف</p>
+      <h2 class="section-title reveal-fade" id="countdown-title">Counting Down to <em>Our Day</em></h2>
+      
+      <!-- Countdown -->
+      <div class="countdown-row reveal-fade" id="countdown" aria-label="Time until wedding">
+        <div class="countdown-unit"><span class="countdown-num" id="cd-days">--</span><span class="countdown-label">Days</span></div>
+        <span class="countdown-sep" aria-hidden="true">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-hours">--</span><span class="countdown-label">Hours</span></div>
+        <span class="countdown-sep" aria-hidden="true">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-mins">--</span><span class="countdown-label">Mins</span></div>
+        <span class="countdown-sep" aria-hidden="true">:</span>
+        <div class="countdown-unit"><span class="countdown-num" id="cd-secs">--</span><span class="countdown-label">Secs</span></div>
+      </div>
+      
+      <div class="countdown-quote reveal-fade" style="transition-delay:0.1s">
+        <p class="quote-arabic">فَسَتَذْكُرُونَ مَا أَقُولُ لَكُمْ ۚ وَأُوَلِّي أَمْرِي إِلَى اللَّهِ ۚ إِنَّ اللَّهَ بَمَا تَعْمَلُونَ بَصِيرٌ</p>
+        <p class="quote-translation">"And you will remember what I say to you. And I entrust my affair to Allah. Indeed, Allah is Seeing of [His] servants."</p>
+        <p class="quote-reference">— Al-Mu'min 40:44</p>
+      </div>
     </div>
   </section>
 
